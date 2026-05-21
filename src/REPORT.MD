@@ -191,15 +191,31 @@ curl -sfL https://get.k3s.io | K3S_URL=https://10.174.8.95:6443 K3S_TOKEN=K102a0
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Проверка**
+
 ![alt text](<img/1/image copy 8.png>)
 
-
+**со всеми тремя узлами в Ready.**
 
 
 ![alt text](<img/1/image copy 9.png>)
 
 
-
+**Все системные поды (CoreDNS, metrics-server, local-path-provisioner). Главное — там не должно быть Traefik, потому что я его отключил.**
 
 
 
