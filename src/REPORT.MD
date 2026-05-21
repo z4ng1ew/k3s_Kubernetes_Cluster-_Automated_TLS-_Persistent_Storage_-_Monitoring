@@ -332,7 +332,7 @@ Ingress Controller     -  L7 (HTTP) - Читает домен/путь → на�
 
 
 
-
+![alt text](<img/1/image copy 12.png>)
 
 
 
