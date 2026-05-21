@@ -295,6 +295,17 @@ curl -sfL https://get.k3s.io | K3S_URL=https://10.174.8.95:6443 K3S_TOKEN=K102a0
 
 ## Part  2. Настройка контроллера Ingress
 
+Стандартный Ingress Controller (Traefik) был отключён при установке k3s
+флагом `--disable=traefik`. Вместо него установлен Nginx Ingress Controller
+из официального манифеста репозитория kubernetes/ingress-nginx (версия
+cloud, рассчитанная на наличие LoadBalancer-провайдера — в k3s его роль
+выполняет встроенный ServiceLB).
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.3/deploy/static/provider/cloud/deploy.yaml`
+
+После установки сервис ingress-nginx-controller получил внешние IP всех
+нод кластера, что позволяет обращаться к нему через любую машину.
+
 ## 1) Контроллер Ingress на основе nginx настраивается в кластере.
 
 
@@ -333,6 +344,10 @@ Ingress Controller     -  L7 (HTTP) - Читает домен/путь → на�
 
 
 ![alt text](<img/1/image copy 12.png>)
+
+**Поды Nginx Ingress - контроллер Running**
+
+**Сервис Nginx Ingress с EXTERNAL-IP - виден EXTERNAL-IP - 10.174.8.91**
 
 
 
