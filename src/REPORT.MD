@@ -191,12 +191,12 @@ curl -sfL https://get.k3s.io | K3S_URL=https://10.174.8.95:6443 K3S_TOKEN=K102a0
 
 
 
+![alt text](<img/1/image copy 8.png>)
 
 
 
 
-
-
+![alt text](<img/1/image copy 9.png>)
 
 
 
