@@ -606,17 +606,20 @@ Wildcard (буквально «джокер») — это звёздочка * �
 
 
 
+
+![alt text](<img/1/image copy 24.png>)
+
+
 ![alt text](<img/2/image copy 2.png>)
 
 **Проверяем**
+
 
 ```
  Address: hello.10.174.8.95.nip.io — это значит, Ingress «привязался» к контроллеру
 
 TLS:
   wildcard-nipio-tls terminates hello.10.174.8.95.nip.io — сертификат подключён
-
-
 ```
 
 
@@ -789,11 +792,11 @@ Location: https://hello.10.174.8.95.nip.io
 
 
 
-    3. Kubernetes и тесты
+##    3. Kubernetes и тесты
 
-1) В Kubernetes создан постоянный том для базы данных PostgreSQL.
-2) Приложение развернуто в Kubernetes и доступно по адресу кластера.
-3) Предоставлены скриншоты результатов теста Postman.
+## 1) В Kubernetes создан постоянный том для базы данных PostgreSQL. *
+## 2) Приложение развернуто в Kubernetes и доступно по адресу кластера. *
+## 3) Предоставлены скриншоты результатов теста Postman. *
 
 
 
