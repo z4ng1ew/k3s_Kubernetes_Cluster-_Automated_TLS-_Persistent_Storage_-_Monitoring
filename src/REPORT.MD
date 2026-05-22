@@ -295,16 +295,6 @@ curl -sfL https://get.k3s.io | K3S_URL=https://10.174.8.95:6443 K3S_TOKEN=K102a0
 
 ## Part  2. Настройка контроллера Ingress
 
-Стандартный Ingress Controller (Traefik) был отключён при установке k3s
-флагом `--disable=traefik`. Вместо него установлен Nginx Ingress Controller
-из официального манифеста репозитория kubernetes/ingress-nginx (версия
-cloud, рассчитанная на наличие LoadBalancer-провайдера — в k3s его роль
-выполняет встроенный ServiceLB).
-
-`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.11.3/deploy/static/provider/cloud/deploy.yaml`
-
-После установки сервис ingress-nginx-controller получил внешние IP всех
-нод кластера, что позволяет обращаться к нему через любую машину.
 
 ## 1) Контроллер Ingress на основе nginx настраивается в кластере. *
 
@@ -369,11 +359,6 @@ Ingress Controller     -  L7 (HTTP) - Читает домен/путь → на�
 
 
 
-## 2) Отчет содержит его конфигурацию и команды, необходимые для настройки контроллера. *
-
-
-
-
 
 
 
@@ -411,10 +396,6 @@ nip.io — это публичная DNS-служба-фокусница. Люб
 ![alt text](<img/1/image copy 15.png>)
 
 **kubectl get pods -n cert-manager — все три пода в Running.**
-
-
-
-
 
 
 
@@ -715,7 +696,12 @@ Location: https://hello.10.174.8.95.nip.io
 
 
 
-## 2.1. Oтчёт содержит конфигурацию контроллера необходимые для его настройки*
+
+## 2) Отчет содержит его конфигурацию и команды, необходимые для настройки контроллера. *
+
+
+
+
 
 
 
@@ -752,7 +738,30 @@ Location: https://hello.10.174.8.95.nip.io
 
 
 
+- Структура 2-го пункта отчёта:
 
+```
+## Part 2. Настройка контроллера Ingress
+[вступление]
+
+## 1) Контроллер Ingress на основе nginx настраивается в кластере. *
+├─ Установка Nginx Ingress Controller  
+├─ Поды и сервис (EXTERNAL-IP)  
+├─ curl -I → 404 от nginx  
+├─ nip.io как «домен»  
+├─ Установка cert-manager  
+├─ CA-инфраструктура (selfsigned → my-root-ca → my-ca-issuer)  
+├─ Wildcard-сертификат  
+├─ Тестовое приложение hello-nginx  
+├─ Ingress-ресурс hello-ingress  
+├─ curl HTTP → 308 редирект  
+├─ curl -k HTTPS → работает  
+└─ openssl s_client → сертификат от my-root-ca  ← граница
+
+## 2) Отчет содержит его конфигурацию и команды, необходимые для настройки контроллера. *
+├─ kubectl describe deployment ingress-nginx-controller  
+└─ Реальный nginx.conf внутри контроллера
+```
 
 
 
