@@ -417,12 +417,12 @@ nip.io — это публичная DNS-служба-фокусница. Люб
 
 **Задача: Создание локального CA и wildcard-сертификата**
 
+**Файл с CA-инфраструктурой  -/home/s/DO-11/src/manifests/ca-setup.yaml**
+
+![alt text](<img/1/image copy 16.png>)
 
 
-
-
-
-
+[text](manifests/ca-setup.yaml)
 
 
 
